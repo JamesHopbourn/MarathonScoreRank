@@ -1,7 +1,6 @@
 package com.example.testm.controller;
 
 import com.example.testm.entity.Personal;
-import com.example.testm.mapper.PersonalMapper;
 import com.example.testm.service.ScoreService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +31,11 @@ public class ScoreController {
     @GetMapping("team_rank")
     List<Personal> getTeamRank(){
         return scoreService.getTeamRank();
+    }
+
+    @GetMapping("team")
+    List<String> getTeamPersonalName(String team_name){
+        return scoreService.getTeamPersonalName(team_name);
     }
 
     @GetMapping("query")

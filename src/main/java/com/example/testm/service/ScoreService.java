@@ -12,6 +12,13 @@ public interface ScoreService {
     List<Personal> getTeamRank();
 
     /**
+     * 查询团队队员名单
+     * @param team_name
+     * @return
+     */
+    List<String> getTeamPersonalName(String team_name);
+
+    /**
      * 根据名字查询成绩
      */
     List<Personal> getPersonalRankByName(String personal_name);

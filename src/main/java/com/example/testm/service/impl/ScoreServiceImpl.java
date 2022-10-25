@@ -45,6 +45,11 @@ public class ScoreServiceImpl implements ScoreService {
     }
 
     @Override
+    public List<String> getTeamPersonalName(String team_name) {
+        return personalMapper.getTeamPersonalName(team_name);
+    }
+
+    @Override
     public List<Personal> getPersonalRankByName(String personal_name) {
         ArrayList<Personal> result = new ArrayList<>();
         List<Personal> overallScore = this.getOverallScore();

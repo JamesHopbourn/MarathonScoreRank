@@ -3,6 +3,7 @@ package com.example.testm.mapper;
 import com.example.testm.entity.Personal;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -13,6 +14,14 @@ public interface PersonalMapper {
      * @return
      */
     List<Personal> getTeamRank();
+
+    /**
+     * 查询团队队员名字
+     * @param team_name
+     * @return
+     */
+    @Select("SELECT personal_name FROM testm WHERE  team_name = #{team_name}")
+    List<String> getTeamPersonalName(String team_name);
 
     /**
      * 查询个人排名
