@@ -13,8 +13,9 @@ public class Personal {
 
     /**
      * 参赛号码
+     * 此处使用 String 类型 避免开头的0被忽略 也方便后续的字母扩展
      */
-    private Integer personal_id;
+    private String personal_id;
 
     /**
      * 参赛选手名字
@@ -32,7 +33,8 @@ public class Personal {
     private Time record_time;
 
     /**
-     * 视频排名 用于近乎同时过线时通过视频区分前后
+     * 视频排名
+     * 用于个人计时赛近乎同时过线时通过视频区分前后
      */
     private Integer video_rank;
 

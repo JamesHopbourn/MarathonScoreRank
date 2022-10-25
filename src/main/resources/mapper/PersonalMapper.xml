@@ -17,13 +17,14 @@
     <select id="getPersonalRank" resultType="Personal">
         SELECT
                result.*,
-               ROW_NUMBER() over (ORDER BY result.`net_time`) AS 'rank'
+               ROW_NUMBER() over (ORDER BY result.`net_time`,result.`video_rank`) AS 'rank'
         FROM    (
                     SELECT m1.`personal_id`,
                            m1.`team_name`,
                            m1.`personal_name`,
                            m1.`sex`,
                            m1.`record_time`,
+                           m1.`video_rank`,
                            COALESCE ((
                                          SELECT date_format(sec_to_time(timestampdiff(second,m2.record_time,m1.record_time)),'%H:%i:%s')
                                          FROM   testm AS m2

@@ -3,6 +3,7 @@ package com.example.testm.service.impl;
 import com.example.testm.entity.Personal;
 import com.example.testm.mapper.PersonalMapper;
 import com.example.testm.service.ScoreService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,7 +16,8 @@ public class ScoreServiceImpl implements ScoreService {
     /**
      * 赛事距离
      */
-    final Double DISTANCE = 6.76;
+    @Value("${marathon.distance}")
+    private Double DISTANCE;
 
     @Resource
     private PersonalMapper personalMapper;

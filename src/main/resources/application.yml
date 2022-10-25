@@ -12,4 +12,4 @@ mybatis:
   type-aliases-package: com.example.testm.entity
 
 marathon:
-  table: testM
+  distance: 6.76
