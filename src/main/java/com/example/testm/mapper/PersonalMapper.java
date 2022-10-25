@@ -4,11 +4,14 @@ import com.example.testm.entity.Personal;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.List;
 
 @Mapper
 public interface PersonalMapper {
+    @Value("{marathon.table}")
+    String table = null;
     /**
      * 查询队伍排名
      * @return
@@ -20,7 +23,7 @@ public interface PersonalMapper {
      * @param team_name
      * @return
      */
-    @Select("SELECT personal_name FROM testm WHERE  team_name = #{team_name}")
+    @Select("SELECT personal_name FROM #{table} WHERE team_name = #{team_name}")
     List<String> getTeamPersonalName(String team_name);
 
     /**
@@ -29,5 +32,5 @@ public interface PersonalMapper {
      * @param gender
      * @return
      */
-    List<Personal> getPersonalRank(@Param("distance") Double distance,@Param("gender") String gender);
+    List<Personal> getPersonalRank(@Param("distance") Double distance, @Param("gender") String gender);
 }

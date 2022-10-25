@@ -2,12 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.example.testm.mapper.PersonalMapper">
+
     <!--  查询队伍排名  -->
     <select id="getTeamRank" resultType="Team">
         SELECT result.team_name,result.net_time
         FROM   (SELECT team_name,
                        Max(record_time) AS 'net_time'
-                FROM   testm
+                FROM   testM
                 GROUP  BY team_name) AS result
         ORDER  BY net_time;
     </select>
