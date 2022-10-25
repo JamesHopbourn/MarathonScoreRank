@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.example.testm.mapper.PersonalMapper">
+    <!--  查询队伍排名  -->
+    <select id="getTeamRank" resultType="Team">
+        SELECT result.team_name,result.net_time
+        FROM   (SELECT team_name,
+                       Max(record_time) AS 'net_time'
+                FROM   testm
+                GROUP  BY team_name) AS result
+        ORDER  BY net_time;
+    </select>
+
+    <!--  根据性别查询成绩并排名  -->
+    <select id="getPersonalRank" resultType="Personal">
+        SELECT  *
+        FROM    (
+                    SELECT m1.`personal_id`,
+                           m1.`team_name`,
+                           m1.`personal_name`,
+                           m1.`sex`,
+                           m1.`record_time`,
+                           COALESCE ((
+                                         SELECT date_format(sec_to_time(timestampdiff(second,m2.record_time,m1.record_time)),'%H:%i:%s')
+                                         FROM   testm AS m2
+                                         WHERE  m2.`personal_id` = m1.`personal_id`-1
+                                           AND    m1.`team_name` = m2.`team_name`),date_format(m1.`record_time`,'%H:%i:%s')) AS 'net_time',
+                           COALESCE ((
+                                         SELECT date_format(sec_to_time(timestampdiff(second,m2.record_time,m1.record_time)/#{distance}),'%i′%s″')
+                                         FROM   testm AS m2
+                                         WHERE  m2.`personal_id` = m1.`personal_id`-1
+                                           AND    m1.`team_name` = m2.`team_name`),date_format(sec_to_time(time_to_sec(m1.`record_time`)/#{distance}),'%i′%s″')) AS 'avg_speed'
+                    FROM   testm m1) AS result
+        WHERE sex LIKE #{gender}
+        ORDER BY net_time
+    </select>
+</mapper>
