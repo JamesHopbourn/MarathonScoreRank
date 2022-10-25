@@ -1,10 +1,10 @@
 spring:
   datasource:
     username: root
-    password: Root@123
+    password: newpassword
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://localhost:3306/CVOID2019?serverTimezone=Asia/Shanghai&useSSL=false&useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:4406/demo?serverTimezone=Asia/Shanghai&useSSL=false&useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml

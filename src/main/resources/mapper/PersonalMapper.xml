@@ -14,7 +14,9 @@
 
     <!--  根据性别查询成绩并排名  -->
     <select id="getPersonalRank" resultType="Personal">
-        SELECT  *
+        SELECT
+               result.*,
+               ROW_NUMBER() over (ORDER BY result.`net_time`) AS 'rank'
         FROM    (
                     SELECT m1.`personal_id`,
                            m1.`team_name`,

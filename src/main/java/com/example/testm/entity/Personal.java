@@ -7,11 +7,6 @@ import java.sql.Time;
 @Data
 public class Personal {
     /**
-     * 赛事名称
-     */
-    private String event;
-
-    /**
      * 参赛队名
      */
     private String team_name;
@@ -50,4 +45,9 @@ public class Personal {
      * 配速
      */
     private String avg_speed;
+
+    /**
+     * 成绩排名
+     */
+    private Integer rank;
 }
