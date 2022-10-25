@@ -36,7 +36,6 @@ public class ScoreController {
 
     @GetMapping("query")
     List<Personal> getPersonalRankByName(String personal_name){
-        System.out.println(personal_name);
         return scoreService.getPersonalRankByName(personal_name);
     }
 }
