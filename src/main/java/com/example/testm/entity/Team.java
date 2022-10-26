@@ -7,6 +7,11 @@ import java.sql.Time;
 @Data
 public class Team {
     /**
+     * 团队排名
+     */
+    private Integer rank;
+
+    /**
      * 参赛队名
      */
     private String team_name;
