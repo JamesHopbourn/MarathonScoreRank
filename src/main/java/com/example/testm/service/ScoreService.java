@@ -1,10 +1,17 @@
 package com.example.testm.service;
 
+import com.example.testm.common.resp.PersonalResp;
 import com.example.testm.entity.Personal;
 
 import java.util.List;
 
 public interface ScoreService {
+    /**
+     * 查询个人整体数据
+     * @return
+     */
+    List<PersonalResp> getPersonalData();
+
     /**
      * 团队排名
      * @return

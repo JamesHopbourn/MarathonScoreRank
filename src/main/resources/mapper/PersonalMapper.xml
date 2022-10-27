@@ -23,7 +23,7 @@
                     SELECT m1.`personal_id`,
                            m1.`team_name`,
                            m1.`personal_name`,
-                           m1.`sex`,
+                           m1.`gender`,
                            m1.`record_time`,
                            m1.`video_rank`,
                            COALESCE ((
@@ -37,7 +37,31 @@
                                          WHERE  m2.`personal_id` = m1.`personal_id`-1
                                            AND    m1.`team_name` = m2.`team_name`),date_format(sec_to_time(time_to_sec(m1.`record_time`)/#{distance}),'%i′%s″')) AS 'avg_speed'
                     FROM   testm m1) AS result
-        WHERE sex LIKE #{gender}
+        WHERE gender LIKE #{gender}
         ORDER BY net_time
     </select>
+
+    <!-- 批量更新性别分组成绩 -->
+    <update id="updateGenderRank" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update testM
+            <set>
+                gender_rank=${item.rank}
+            </set>
+            where personal_id = ${item.personal_id}
+        </foreach>
+    </update>
+
+    <!--  批量更新个人成绩  -->
+    <update id="updateOverallRank" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            UPDATE testM
+            <set>
+                net_time = #{item.net_time},
+                overall_rank = #{item.rank},
+                avg_speed = #{item.avg_speed}
+            </set>
+            WHERE personal_id = ${item.personal_id}
+        </foreach>
+    </update>
 </mapper>

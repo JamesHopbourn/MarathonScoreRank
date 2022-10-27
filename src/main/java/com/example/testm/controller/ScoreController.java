@@ -1,5 +1,6 @@
 package com.example.testm.controller;
 
+import com.example.testm.common.resp.PersonalResp;
 import com.example.testm.entity.Personal;
 import com.example.testm.service.ScoreService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,19 +14,9 @@ public class ScoreController {
     @Resource
     private ScoreService scoreService;
 
-    @GetMapping("man")
-    List<Personal> getManScore(){
-        return scoreService.getManScore();
-    }
-
-    @GetMapping("woman")
-    List<Personal> getWomanScore(){
-        return scoreService.getWomanScore();
-    }
-
     @GetMapping("overall")
-    List<Personal> getOverallScore(){
-        return scoreService.getOverallScore();
+    List<PersonalResp> getOverallScore(){
+        return scoreService.getPersonalData();
     }
 
     @GetMapping("team_rank")

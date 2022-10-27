@@ -1,20 +1,11 @@
-package com.example.testm.entity;
+package com.example.testm.common.resp;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
 import java.sql.Time;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Personal {
-    /**
-     * 参赛队名
-     */
-    private String team_name;
-
+public class PersonalResp {
     /**
      * 参赛号码
      * 此处使用 String 类型 避免开头的0被忽略 也方便后续的字母扩展
@@ -47,12 +38,6 @@ public class Personal {
     private Integer overall_rank;
 
     /**
-     * 视频排名
-     * 用于个人计时赛近乎同时过线时通过视频区分前后
-     */
-    private Integer video_rank;
-
-    /**
      * 实际用时
      */
     private Time net_time;
@@ -61,9 +46,4 @@ public class Personal {
      * 配速
      */
     private String avg_speed;
-
-    /**
-     * 成绩排名
-     */
-    private Integer rank;
 }

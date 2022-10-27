@@ -1,5 +1,6 @@
 package com.example.testm.service.impl;
 
+import com.example.testm.common.resp.PersonalResp;
 import com.example.testm.entity.Personal;
 import com.example.testm.mapper.PersonalMapper;
 import com.example.testm.service.ScoreService;
@@ -38,6 +39,11 @@ public class ScoreServiceImpl implements ScoreService {
     public List<Personal> getOverallScore() {
         List<Personal> OverallScore = personalMapper.getPersonalRank(DISTANCE, "%");
         return OverallScore;
+    }
+
+    @Override
+    public List<PersonalResp> getPersonalData() {
+        return personalMapper.getPersonalData();
     }
 
     @Override
