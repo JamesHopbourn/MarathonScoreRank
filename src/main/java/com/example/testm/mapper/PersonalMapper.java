@@ -13,7 +13,6 @@ public interface PersonalMapper {
     /**
      * 查询个人整体数据
      */
-    @Select("SELECT personal_bib, personal_name, gender, record_time, net_time, gender_rank, overall_rank, avg_pace from testM")
     List<PersonalResp> getPersonalData();
 
     /**
