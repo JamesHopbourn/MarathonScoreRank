@@ -18,6 +18,11 @@ class PersonalMapperTest {
     private PersonalMapper personalMapper;
 
     @Test
+    void getTeamRank(){
+        System.out.println(scoreService.getTeamRank());
+    }
+
+    @Test
     void updateScoreData(){
         // 更新男子性别分组成绩
         List<Personal> manScore = scoreService.getManScore();

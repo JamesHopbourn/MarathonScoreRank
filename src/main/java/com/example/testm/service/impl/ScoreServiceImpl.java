@@ -2,6 +2,7 @@ package com.example.testm.service.impl;
 
 import com.example.testm.common.resp.PersonalResp;
 import com.example.testm.entity.Personal;
+import com.example.testm.entity.Team;
 import com.example.testm.mapper.PersonalMapper;
 import com.example.testm.service.ScoreService;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,13 +48,13 @@ public class ScoreServiceImpl implements ScoreService {
     }
 
     @Override
-    public List<Personal> getTeamRank() {
-        List<Personal> teamRank = personalMapper.getTeamRank();
+    public List<Team> getTeamRank() {
+        List<Team> teamRank = personalMapper.getTeamRank();
         return teamRank;
     }
 
     @Override
-    public List<String> getTeamPersonalName(String team_name) {
+    public List<Personal> getTeamPersonalName(String team_name) {
         return personalMapper.getTeamPersonalName(team_name);
     }
 

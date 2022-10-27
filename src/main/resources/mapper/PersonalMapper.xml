@@ -18,7 +18,7 @@
     </select>
 
     <!--  查询队伍排名  -->
-    <select id="getTeamRank" resultType="com.example.testm.entity.Personal">
+    <select id="getTeamRank" resultType="com.example.testm.entity.Team">
         SELECT result.team_name,result.net_time,
                ROW_NUMBER() over (ORDER BY result.net_time) AS 'rank'
         FROM   (SELECT team_name,

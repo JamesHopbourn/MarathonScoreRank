@@ -2,6 +2,7 @@ package com.example.testm.service;
 
 import com.example.testm.common.resp.PersonalResp;
 import com.example.testm.entity.Personal;
+import com.example.testm.entity.Team;
 
 import java.util.List;
 
@@ -16,14 +17,14 @@ public interface ScoreService {
      * 团队排名
      * @return
      */
-    List<Personal> getTeamRank();
+    List<Team> getTeamRank();
 
     /**
      * 查询团队队员名单
      * @param team_name
      * @return
      */
-    List<String> getTeamPersonalName(String team_name);
+    List<Personal> getTeamPersonalName(String team_name);
 
     /**
      * 根据名字查询成绩

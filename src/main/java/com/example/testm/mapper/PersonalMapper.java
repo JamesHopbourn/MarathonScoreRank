@@ -2,6 +2,7 @@ package com.example.testm.mapper;
 
 import com.example.testm.common.resp.PersonalResp;
 import com.example.testm.entity.Personal;
+import com.example.testm.entity.Team;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -19,7 +20,7 @@ public interface PersonalMapper {
      * 查询队伍排名
      * @return
      */
-    List<Personal> getTeamRank();
+    List<Team> getTeamRank();
 
     /**
      * 查询团队队员名字                                                          
@@ -27,7 +28,7 @@ public interface PersonalMapper {
      * @return
      */
     @Select("SELECT personal_name FROM testM WHERE team_name = #{team_name}")
-    List<String> getTeamPersonalName(String team_name);
+    List<Personal> getTeamPersonalName(String team_name);
 
     /**
      * 查询个人排名
