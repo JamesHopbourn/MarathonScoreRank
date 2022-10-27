@@ -10,7 +10,7 @@ public class PersonalResp {
      * 参赛号码
      * 此处使用 String 类型 避免开头的0被忽略 也方便后续的字母扩展
      */
-    private String personal_id;
+    private String personal_bib;
 
     /**
      * 参赛选手名字

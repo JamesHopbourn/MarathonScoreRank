@@ -20,7 +20,7 @@
                result.*,
                ROW_NUMBER() over (ORDER BY result.`net_time`,result.`video_rank`) AS 'rank'
         FROM    (
-                    SELECT m1.`personal_id`,
+                    SELECT m1.`personal_bib`,
                            m1.`team_name`,
                            m1.`personal_name`,
                            m1.`gender`,
@@ -29,12 +29,12 @@
                            COALESCE ((
                                          SELECT date_format(sec_to_time(timestampdiff(second,m2.record_time,m1.record_time)),'%H:%i:%s')
                                          FROM   testm AS m2
-                                         WHERE  m2.`personal_id` = m1.`personal_id`-1
+                                         WHERE  m2.`personal_bib` = m1.`personal_bib`-1
                                            AND    m1.`team_name` = m2.`team_name`),date_format(m1.`record_time`,'%H:%i:%s')) AS 'net_time',
                            COALESCE ((
                                          SELECT date_format(sec_to_time(timestampdiff(second,m2.record_time,m1.record_time)/#{distance}),'%i′%s″')
                                          FROM   testm AS m2
-                                         WHERE  m2.`personal_id` = m1.`personal_id`-1
+                                         WHERE  m2.`personal_bib` = m1.`personal_bib`-1
                                            AND    m1.`team_name` = m2.`team_name`),date_format(sec_to_time(time_to_sec(m1.`record_time`)/#{distance}),'%i′%s″')) AS 'avg_pace'
                     FROM   testm m1) AS result
         WHERE gender LIKE #{gender}
@@ -48,7 +48,7 @@
             <set>
                 gender_rank=${item.rank}
             </set>
-            where personal_id = ${item.personal_id}
+            where personal_bib = ${item.personal_bib}
         </foreach>
     </update>
 
@@ -61,7 +61,7 @@
                 net_time = #{item.net_time},
                 overall_rank = #{item.rank}
             </set>
-            WHERE personal_id = #{item.personal_id}
+            WHERE personal_bib = #{item.personal_bib}
         </foreach>
     </update>
 </mapper>
