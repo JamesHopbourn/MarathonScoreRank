@@ -35,7 +35,7 @@
                                          SELECT date_format(sec_to_time(timestampdiff(second,m2.record_time,m1.record_time)/#{distance}),'%i′%s″')
                                          FROM   testm AS m2
                                          WHERE  m2.`personal_id` = m1.`personal_id`-1
-                                           AND    m1.`team_name` = m2.`team_name`),date_format(sec_to_time(time_to_sec(m1.`record_time`)/#{distance}),'%i′%s″')) AS 'avg_speed'
+                                           AND    m1.`team_name` = m2.`team_name`),date_format(sec_to_time(time_to_sec(m1.`record_time`)/#{distance}),'%i′%s″')) AS 'avg_pace'
                     FROM   testm m1) AS result
         WHERE gender LIKE #{gender}
         ORDER BY net_time
@@ -57,11 +57,11 @@
         <foreach collection="list" item="item" index="index" open="" close="" separator=";">
             UPDATE testM
             <set>
+                avg_pace = #{item.avg_pace},
                 net_time = #{item.net_time},
-                overall_rank = #{item.rank},
-                avg_speed = #{item.avg_speed}
+                overall_rank = #{item.rank}
             </set>
-            WHERE personal_id = ${item.personal_id}
+            WHERE personal_id = #{item.personal_id}
         </foreach>
     </update>
 </mapper>

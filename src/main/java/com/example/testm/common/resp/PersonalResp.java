@@ -45,5 +45,5 @@ public class PersonalResp {
     /**
      * 配速
      */
-    private String avg_speed;
+    private String avg_pace;
 }
