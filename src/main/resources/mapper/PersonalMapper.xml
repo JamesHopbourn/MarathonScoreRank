@@ -17,6 +17,17 @@
         WHERE  record_time IS NOT NULL
     </select>
 
+    <!--  查询重复净时间数据  -->
+    <select id="findSameNetTime" resultType="com.example.testm.entity.Personal">
+        SELECT *
+        FROM   testm
+        WHERE  net_time IN (SELECT net_time
+                            FROM   testm
+                            GROUP  BY net_time
+                            HAVING Count(*) > 1)
+        ORDER  BY net_time DESC
+    </select>
+
     <!--  查询队伍排名  -->
     <select id="getTeamRank" resultType="com.example.testm.entity.Team">
         SELECT result.team_name,result.net_time,

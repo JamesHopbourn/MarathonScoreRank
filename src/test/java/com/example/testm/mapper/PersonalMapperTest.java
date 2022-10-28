@@ -19,7 +19,8 @@ class PersonalMapperTest {
 
     @Test
     void getTeamRank(){
-        System.out.println(scoreService.getTeamRank());
+        List<Personal> personalList = personalMapper.findSameNetTime();
+        personalList.forEach(System.out::println);
     }
 
     @Test

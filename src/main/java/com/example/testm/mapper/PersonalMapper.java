@@ -13,8 +13,15 @@ import java.util.List;
 public interface PersonalMapper {
     /**
      * 查询个人整体数据
+     * @return
      */
     List<PersonalResp> getPersonalData();
+
+    /**
+     * 查询重复时间记录
+     * @return
+     */
+    List<Personal> findSameNetTime();
 
     /**
      * 查询队伍排名
