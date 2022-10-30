@@ -11,12 +11,6 @@ import java.util.List;
 @Mapper
 public interface PersonalMapper {
     /**
-     * 查询个人整体数据
-     * @return
-     */
-    List<Personal> getPersonalData();
-
-    /**
      * 查询重复时间记录
      * @return
      */

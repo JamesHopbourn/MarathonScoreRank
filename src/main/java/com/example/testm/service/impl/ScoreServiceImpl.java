@@ -52,11 +52,6 @@ public class ScoreServiceImpl implements ScoreService {
     }
 
     @Override
-    public List<Personal> getPersonalData() {
-        return personalMapper.getPersonalData();
-    }
-
-    @Override
     public List<Team> getTeamRank() {
         List<Team> teamRank = personalMapper.getTeamRank();
         log.info(teamRank.toString());

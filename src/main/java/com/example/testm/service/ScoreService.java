@@ -7,12 +7,6 @@ import java.util.List;
 
 public interface ScoreService {
     /**
-     * 查询个人整体数据
-     * @return
-     */
-    List<Personal> getPersonalData();
-
-    /**
      * 团队排名
      * @return
      */

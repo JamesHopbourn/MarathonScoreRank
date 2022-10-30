@@ -49,6 +49,8 @@
                            m1.`team_name`,
                            m1.`personal_name`,
                            m1.`gender`,
+                           m1.`gender_rank`,
+                           m1.`overall_rank`,
                            m1.`record_time`,
                            m1.`video_rank`,
                            COALESCE ((
