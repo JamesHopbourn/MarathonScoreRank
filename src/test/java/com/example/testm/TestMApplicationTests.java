@@ -29,7 +29,7 @@ class TestMApplicationTests {
 
         // 计算更新全体排名、平均速度
         List<Personal> overallScore = scoreService.getOverallScore();
-        Boolean overallBoolean = scoreService.updateGenderRank(overallScore);
+        Boolean overallBoolean = scoreService.updateOverallRank(overallScore);
         log.info(overallBoolean.toString());
     }
 }

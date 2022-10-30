@@ -52,6 +52,12 @@ public class ScoreServiceImpl implements ScoreService {
     }
 
     @Override
+    public Boolean updateOverallRank(List<Personal> overallScore) {
+        int i = personalMapper.updateOverallRank(overallScore);
+        return i == 1;
+    }
+
+    @Override
     public Boolean updateGenderRank(List<Personal> personalList) {
         int i = personalMapper.updateGenderRank(personalList);
         return i == 1;
