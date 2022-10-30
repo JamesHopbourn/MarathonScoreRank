@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
 
-import os
+import yaml
 import pymysql
 import pandas as pd
 
 # 定义表格名字
 table = 'testM'
 
+with open("../src/main/resources/application.yml", 'r') as f:
+    config = yaml.load(f, Loader=yaml.FullLoader)['spring']['datasource']
 # 连接数据库
 connection = pymysql.connect(
-    user='root',
-    password='newpassword',
-    host='127.0.01',
+    user=config['username'],
+    password=config['password'],
+    host='127.0.0.1',
     database='demo'
 )
 
