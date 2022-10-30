@@ -1,7 +1,6 @@
 package com.example.testm;
 
 import com.example.testm.entity.Personal;
-import com.example.testm.mapper.PersonalMapper;
 import com.example.testm.service.ScoreService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -15,27 +14,22 @@ import java.util.List;
 class TestMApplicationTests {
     @Resource
     private ScoreService scoreService;
-    @Resource
-    private PersonalMapper personalMapper;
-
-    @Test
-    void getTeamRank(){
-        List<Personal> personalList = personalMapper.findSameNetTime();
-        personalList.forEach(System.out::println);
-    }
 
     @Test
     void updateScoreData(){
-        // 更新男子性别分组成绩
+        // 计算更新男子性别分组成绩
         List<Personal> manScore = scoreService.getManScore();
-        log.info(String.valueOf(personalMapper.updateGenderRank(manScore) == 1));
+        Boolean manBoolean = scoreService.updateGenderRank(manScore);
+        log.info(manBoolean.toString());
 
-        // 更新女子性别分组成绩
+        // 计算更新女子性别分组成绩
         List<Personal> womanScore = scoreService.getWomanScore();
-        log.info(String.valueOf(personalMapper.updateGenderRank(womanScore) == 1));
+        Boolean womanBoolean = scoreService.updateGenderRank(womanScore);
+        log.info(womanBoolean.toString());
 
-        // 更新全体排名、平均速度
+        // 计算更新全体排名、平均速度
         List<Personal> overallScore = scoreService.getOverallScore();
-        log.info(String.valueOf(personalMapper.updateOverallRank(overallScore) == 1));
+        Boolean overallBoolean = scoreService.updateGenderRank(overallScore);
+        log.info(overallBoolean.toString());
     }
 }

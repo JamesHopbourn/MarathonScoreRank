@@ -52,6 +52,12 @@ public class ScoreServiceImpl implements ScoreService {
     }
 
     @Override
+    public Boolean updateGenderRank(List<Personal> personalList) {
+        int i = personalMapper.updateGenderRank(personalList);
+        return i == 1;
+    }
+
+    @Override
     public List<Team> getTeamRank() {
         List<Team> teamRank = personalMapper.getTeamRank();
         log.info(teamRank.toString());

@@ -54,4 +54,11 @@ public interface ScoreService {
      * @return
      */
     List<Personal> getOverallScore();
+
+    /**
+     * 计算更新成绩
+     * @param personalList
+     * @return
+     */
+    Boolean updateGenderRank(List<Personal> personalList);
 }
