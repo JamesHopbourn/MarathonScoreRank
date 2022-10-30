@@ -59,6 +59,13 @@ public class ScoreServiceImpl implements ScoreService {
     }
 
     @Override
+    public List<Personal> getScoreByGender(String gender) {
+        List<Personal> scoreByGender = personalMapper.getScoreByGender(gender);
+        log.info(scoreByGender.toString());
+        return scoreByGender;
+    }
+
+    @Override
     public List<Personal> getTeamPersonalName(String team_name) {
         List<Personal> teamPersonalName = personalMapper.getTeamPersonalName(team_name);
         log.info(teamPersonalName.toString());

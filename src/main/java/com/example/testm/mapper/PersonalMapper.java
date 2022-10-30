@@ -23,7 +23,15 @@ public interface PersonalMapper {
     List<Team> getTeamRank();
 
     /**
-     * 查询团队队员名字                                                          
+     * 查询个人排名
+     * @param distance
+     * @param gender
+     * @return
+     */
+    List<Personal> getPersonalRank(@Param("distance") Double distance, @Param("gender") String gender);
+
+    /**
+     * 查询团队队员名字
      * @param team_name
      * @return
      */
@@ -31,12 +39,12 @@ public interface PersonalMapper {
     List<Personal> getTeamPersonalName(String team_name);
 
     /**
-     * 查询个人排名
-     * @param distance
+     * 根据性别查询分组成绩
      * @param gender
      * @return
      */
-    List<Personal> getPersonalRank(@Param("distance") Double distance, @Param("gender") String gender);
+    @Select("SELECT * FROM testM WHERE gender LIKE #{gender}")
+    List<Personal> getScoreByGender(String gender);
 
     /**
      * 更新性别分组成绩

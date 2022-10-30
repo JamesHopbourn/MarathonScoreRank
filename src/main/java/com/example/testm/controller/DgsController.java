@@ -24,11 +24,11 @@ public class DgsController {
     public List<Personal> personals(@InputArgument String query, @InputArgument String value){
         switch (query) {
             case "male":
-                return scoreService.getManScore();
+                return scoreService.getScoreByGender("男");
             case "female":
-                return scoreService.getWomanScore();
+                return scoreService.getScoreByGender("女");
             case "overall":
-                return scoreService.getOverallScore();
+                return scoreService.getScoreByGender("%");
             case "same":
                 return scoreService.findSameNetTime();
             case "members":

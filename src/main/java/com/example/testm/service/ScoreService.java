@@ -25,6 +25,13 @@ public interface ScoreService {
     List<Personal> getPersonalRankByName(String personal_name);
 
     /**
+     * 根据性别查询分组成绩
+     * @param gender
+     * @return
+     */
+    List<Personal> getScoreByGender(String gender);
+
+    /**
      * 男子组排名
      * @return
      */
