@@ -1,6 +1,5 @@
 package com.example.testm.mapper;
 
-import com.example.testm.common.resp.PersonalResp;
 import com.example.testm.entity.Personal;
 import com.example.testm.entity.Team;
 import org.apache.ibatis.annotations.Param;
@@ -15,7 +14,7 @@ public interface PersonalMapper {
      * 查询个人整体数据
      * @return
      */
-    List<PersonalResp> getPersonalData();
+    List<Personal> getPersonalData();
 
     /**
      * 查询重复时间记录

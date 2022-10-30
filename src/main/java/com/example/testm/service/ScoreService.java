@@ -1,6 +1,5 @@
 package com.example.testm.service;
 
-import com.example.testm.common.resp.PersonalResp;
 import com.example.testm.entity.Personal;
 import com.example.testm.entity.Team;
 
@@ -11,7 +10,7 @@ public interface ScoreService {
      * 查询个人整体数据
      * @return
      */
-    List<PersonalResp> getPersonalData();
+    List<Personal> getPersonalData();
 
     /**
      * 团队排名
@@ -42,6 +41,12 @@ public interface ScoreService {
      * @return
      */
     List<Personal> getWomanScore();
+
+    /**
+     * 查询重复时间记录
+     * @return
+     */
+    List<Personal> findSameNetTime();
 
     /**
      * 全体排名
