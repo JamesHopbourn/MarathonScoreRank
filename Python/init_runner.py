@@ -4,17 +4,14 @@ import yaml
 import pymysql
 import pandas as pd
 
-# 定义表格名字
-table = 'testM'
-
 with open("../src/main/resources/application.yml", 'r') as f:
-    config = yaml.load(f, Loader=yaml.FullLoader)['spring']['datasource']
+    config = yaml.load(f, Loader=yaml.FullLoader)['mysql']
 # 连接数据库
 connection = pymysql.connect(
+    host=config['host'],
     user=config['username'],
     password=config['password'],
-    host='127.0.0.1',
-    database='demo'
+    database=config['database'],
 )
 
 # 表格数据转为字典
@@ -23,11 +20,11 @@ data = sheet.to_dict(orient="records")
 
 # 删除表
 cursor = connection.cursor()
-cursor.execute(f"DROP TABLE IF EXISTS {table}")
+cursor.execute(f"DROP TABLE IF EXISTS {config['table']}")
 connection.commit()
 
 # 创建表
-cursor.execute(f"""CREATE TABLE {table} (
+cursor.execute(f"""CREATE TABLE {config['table']} (
       `team_name` char(14) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '团队名字',
       `personal_bib` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '选手号码',
       `personal_name` char(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '选手名字',
@@ -49,7 +46,7 @@ command = []
 for item in data:
     command.append((f"{item['team_name'].rstrip()}", f"{item['personal_bib']:04}",
                    f"{item['personal_name']}", f"{item['gender']}"))
-insert_query = f"INSERT INTO {table}(`team_name`,`personal_bib`,`personal_name`, `gender`) VALUES (%s, %s, %s, %s) "
+insert_query = f"INSERT INTO {config['table']}(`team_name`,`personal_bib`,`personal_name`, `gender`) VALUES (%s, %s, %s, %s) "
 
 cursor.executemany(insert_query, command)
 connection.commit()

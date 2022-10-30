@@ -1,10 +1,18 @@
+mysql:
+  host: 127.0.0.1
+  port: 3306
+  table: testM
+  database: demo
+  username: root
+  password: newpassword
+
 spring:
   datasource:
-    username: root
-    password: newpassword
+    username: ${mysql.username}
+    password: ${mysql.password}
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://localhost:3306/demo?serverTimezone=Asia/Shanghai&useSSL=false&useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true&allowMultiQueries=true
+    url: jdbc:mysql://${mysql.host}:${mysql.port}/${mysql.database}?serverTimezone=Asia/Shanghai&useSSL=false&useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true&allowMultiQueries=true
 
 mybatis:
   configuration-properties:
