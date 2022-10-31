@@ -15,7 +15,7 @@ connection = pymysql.connect(
 )
 
 # 表格数据转为字典
-sheet = pd.read_excel('name.xlsx')
+sheet = pd.read_excel('data.xlsx')
 data = sheet.to_dict(orient="records")
 
 # 删除表

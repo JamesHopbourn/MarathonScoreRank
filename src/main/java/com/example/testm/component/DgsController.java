@@ -1,4 +1,4 @@
-package com.example.testm.controller;
+package com.example.testm.component;
 
 import com.example.testm.entity.Personal;
 import com.example.testm.entity.Team;
