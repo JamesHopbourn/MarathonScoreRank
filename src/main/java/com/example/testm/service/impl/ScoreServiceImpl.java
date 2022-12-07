@@ -89,7 +89,7 @@ public class ScoreServiceImpl implements ScoreService {
         ArrayList<Personal> result = new ArrayList<>();
         List<Personal> overallScore = this.getOverallScore();
         for (Personal item : overallScore){
-            if (Objects.equals(item.getPersonal_name(), personal_name)){
+            if (Objects.equals(item.getPersonalName(), personal_name)){
                 result.add(item);
             }
         }

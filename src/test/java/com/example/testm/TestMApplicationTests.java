@@ -6,7 +6,7 @@ import com.example.testm.entity.Personal;
 import com.example.testm.entity.Team;
 import com.example.testm.mapper.TeamMapper;
 import com.example.testm.service.ScoreService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.example.testm.service.TeamService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -26,7 +26,7 @@ class TestMApplicationTests {
     @Resource
     private ScoreService scoreService;
     @Resource
-    private TeamMapper teamMapper;
+    private TeamService teamService;
 
     @Test
     @Order(1)
@@ -52,7 +52,7 @@ class TestMApplicationTests {
     void select(){
         List<Team> teamRank = scoreService.getTeamRank();
         for (Team team : teamRank) {
-            teamMapper.insert(team);
+            teamService.save(team);
         }
     }
 
@@ -60,10 +60,10 @@ class TestMApplicationTests {
     @Order(3)
     void findSameNetTime(){
         List<Personal> sameNetTime = scoreService.findSameNetTime();
-        Time netTime = sameNetTime.get(0).getNet_time();
+        Time netTime = sameNetTime.get(0).getNetTime();
         for(Personal personal : sameNetTime){
-            if (!Objects.equals(personal.getNet_time(), netTime)){
-                netTime = personal.getNet_time();
+            if (!Objects.equals(personal.getNetTime(), netTime)){
+                netTime = personal.getNetTime();
                 System.out.println();
             }
             System.out.println(personal);

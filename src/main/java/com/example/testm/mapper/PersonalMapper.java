@@ -35,7 +35,6 @@ public interface PersonalMapper {
      * @param team_name
      * @return
      */
-    @Select("SELECT personal_name FROM testM WHERE team_name = #{team_name}")
     List<Personal> getTeamPersonalName(String team_name);
 
     /**
@@ -43,7 +42,6 @@ public interface PersonalMapper {
      * @param gender
      * @return
      */
-    @Select("SELECT * FROM testM WHERE gender LIKE #{gender}")
     List<Personal> getScoreByGender(String gender);
 
     /**

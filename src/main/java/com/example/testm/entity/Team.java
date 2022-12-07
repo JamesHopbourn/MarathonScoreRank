@@ -9,15 +9,15 @@ public class Team {
     /**
      * 团队排名
      */
-    private Integer team_rank;
+    private Integer teamRank;
 
     /**
      * 参赛队名
      */
-    private String team_name;
+    private String teamName;
 
     /**
      * 实际用时
      */
-    private Time net_time;
+    private Time netTime;
 }

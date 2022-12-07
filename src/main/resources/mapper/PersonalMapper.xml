@@ -30,13 +30,13 @@
 
     <!--  查询队伍排名  -->
     <select id="getTeamRank" resultType="com.example.testm.entity.Team">
-        SELECT result.team_name,result.net_time,
-               ROW_NUMBER() over (ORDER BY result.net_time) AS 'team_rank'
+        SELECT result.team_name,result.netTime,
+               ROW_NUMBER() over (ORDER BY result.netTime) AS 'teamRank'
         FROM   (SELECT team_name,
-                       Max(record_time) AS 'net_time'
+                       Max(record_time) AS 'netTime'
                 FROM   testM
                 GROUP  BY team_name) AS result
-        ORDER  BY net_time;
+        ORDER  BY netTime;
     </select>
 
     <!--  根据性别查询成绩并排名  -->
@@ -68,6 +68,16 @@
         ORDER BY net_time
     </select>
 
+    <!-- 查询团队队员名字-->
+    <select id="getTeamPersonalName" resultType="com.example.testm.entity.Personal">
+        SELECT personal_name FROM testM WHERE team_name = #{team_name}
+    </select>
+
+    <!-- 根据性别查询分组成绩-->
+    <select id="getScoreByGender" resultType="com.example.testm.entity.Personal">
+        SELECT * FROM testM WHERE gender LIKE #{gender}
+    </select>
+
     <!-- 批量更新性别分组成绩 -->
     <update id="updateGenderRank" parameterType="java.util.List">
         <foreach collection="list" item="item" index="index" open="" close="" separator=";">
@@ -75,7 +85,7 @@
             <set>
                 gender_rank=${item.rank}
             </set>
-            where personal_bib = ${item.personal_bib}
+            where personal_bib = ${item.personalBib}
         </foreach>
     </update>
 
@@ -84,11 +94,11 @@
         <foreach collection="list" item="item" index="index" open="" close="" separator=";">
             UPDATE testM
             <set>
-                avg_pace = #{item.avg_pace},
-                net_time = #{item.net_time},
+                avg_pace = #{item.avgPace},
+                net_time = #{item.netTime},
                 overall_rank = #{item.rank}
             </set>
-            WHERE personal_bib = #{item.personal_bib}
+            WHERE personal_bib = #{item.personalBib}
         </foreach>
     </update>
 </mapper>
