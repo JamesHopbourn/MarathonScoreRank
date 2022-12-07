@@ -1,14 +1,10 @@
 package com.example.testm.entity;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
 import java.sql.Time;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Personal {
     /**
      * 参赛队名

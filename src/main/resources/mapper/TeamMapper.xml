@@ -3,6 +3,6 @@
 
 <mapper namespace="com.example.testm.mapper.TeamMapper">
     <insert id="insert"  parameterType="com.example.testm.entity.Team">
-        INSERT INTO team(team_rank, team_name, net_time) VALUES (#{t.teamRank}, #{t.teamName}, #{t.netTime})
+        INSERT INTO ${team-table} (team_rank, team_name, net_time) VALUES (#{t.teamRank}, #{t.teamName}, #{t.netTime})
     </insert>
 </mapper>
