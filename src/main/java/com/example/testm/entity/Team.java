@@ -9,7 +9,7 @@ public class Team {
     /**
      * 团队排名
      */
-    private Integer rank;
+    private Integer team_rank;
 
     /**
      * 参赛队名

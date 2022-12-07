@@ -3,19 +3,19 @@
 
 <mapper namespace="com.example.testm.mapper.PersonalMapper">
     <!--  查询个人整体数据  -->
-    <select id="getPersonalData" resultType="com.example.testm.entity.Personal">
-        SELECT personal_bib,
-               personal_name,
-               gender,
-               record_time,
-               net_time,
-               gender_rank,
-               overall_rank,
-               avg_pace
-        FROM   testm
-        WHERE  record_time IS NOT NULL
-        ORDER BY overall_rank;
-    </select>
+<!--    <select id="getPersonalData" resultType="com.example.testm.entity.Personal">-->
+<!--        SELECT personal_bib,-->
+<!--               personal_name,-->
+<!--               gender,-->
+<!--               record_time,-->
+<!--               net_time,-->
+<!--               gender_rank,-->
+<!--               overall_rank,-->
+<!--               avg_pace-->
+<!--        FROM   testm-->
+<!--        WHERE  record_time IS NOT NULL-->
+<!--        ORDER BY overall_rank;-->
+<!--    </select>-->
 
     <!--  查询重复净时间数据  -->
     <select id="findSameNetTime" resultType="com.example.testm.entity.Personal">
@@ -31,7 +31,7 @@
     <!--  查询队伍排名  -->
     <select id="getTeamRank" resultType="com.example.testm.entity.Team">
         SELECT result.team_name,result.net_time,
-               ROW_NUMBER() over (ORDER BY result.net_time) AS 'rank'
+               ROW_NUMBER() over (ORDER BY result.net_time) AS 'team_rank'
         FROM   (SELECT team_name,
                        Max(record_time) AS 'net_time'
                 FROM   testM
