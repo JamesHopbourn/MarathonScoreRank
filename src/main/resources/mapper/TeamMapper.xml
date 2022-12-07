@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.example.testm.mapper.TeamMapper">
-    <insert id="insert"  parameterType="com.example.testm.entity.Team">
+    <insert id="insert"  parameterType="Team">
         INSERT INTO ${team-table} (team_rank, team_name, net_time) VALUES (#{t.teamRank}, #{t.teamName}, #{t.netTime})
     </insert>
 </mapper>
