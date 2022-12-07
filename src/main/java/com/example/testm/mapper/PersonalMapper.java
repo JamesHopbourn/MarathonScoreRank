@@ -4,7 +4,6 @@ import com.example.testm.entity.Personal;
 import com.example.testm.entity.Team;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -32,10 +31,10 @@ public interface PersonalMapper {
 
     /**
      * 查询团队队员名字
-     * @param team_name
+     * @param teamName
      * @return
      */
-    List<Personal> getTeamPersonalName(String team_name);
+    List<Personal> getTeamPersonalName(String teamName);
 
     /**
      * 根据性别查询分组成绩

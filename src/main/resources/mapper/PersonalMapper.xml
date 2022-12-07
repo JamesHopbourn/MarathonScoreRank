@@ -70,7 +70,7 @@
 
     <!-- 查询团队队员名字-->
     <select id="getTeamPersonalName" resultType="Personal">
-        SELECT personal_name FROM ${data-table} WHERE team_name = #{team_name}
+        SELECT personal_name FROM ${data-table} WHERE team_name = #{teamName}
     </select>
 
     <!-- 根据性别查询分组成绩-->
