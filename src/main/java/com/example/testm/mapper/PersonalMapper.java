@@ -26,7 +26,7 @@ public interface PersonalMapper {
      * @param gender
      * @return
      */
-    List<Personal> getPersonalRank(@Param("gender") String gender);
+    List<Personal> getPersonalRank(String gender);
 
     /**
      * 查询团队队员名字
