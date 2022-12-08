@@ -5,7 +5,6 @@ import com.example.testm.entity.Team;
 import com.example.testm.mapper.PersonalMapper;
 import com.example.testm.service.ScoreService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,25 +15,19 @@ import java.util.Objects;
 @Slf4j
 @Service
 public class ScoreServiceImpl implements ScoreService {
-    /**
-     * 赛事距离
-     */
-    @Value("${marathon.distance}")
-    private Double DISTANCE;
-
     @Resource
     private PersonalMapper personalMapper;
 
     @Override
     public List<Personal> getManScore() {
-        List<Personal> manScore = personalMapper.getPersonalRank(DISTANCE, "男");
+        List<Personal> manScore = personalMapper.getPersonalRank("男");
         log.info(manScore.toString());
         return manScore;
     }
 
     @Override
     public List<Personal> getWomanScore() {
-        List<Personal> WomanScore = personalMapper.getPersonalRank(DISTANCE, "女");
+        List<Personal> WomanScore = personalMapper.getPersonalRank("女");
         log.info(WomanScore.toString());
         return WomanScore;
     }
@@ -46,7 +39,7 @@ public class ScoreServiceImpl implements ScoreService {
 
     @Override
     public List<Personal> getOverallScore() {
-        List<Personal> OverallScore = personalMapper.getPersonalRank(DISTANCE, "%");
+        List<Personal> OverallScore = personalMapper.getPersonalRank("%");
         log.info(OverallScore.toString());
         return OverallScore;
     }

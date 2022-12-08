@@ -23,11 +23,10 @@ public interface PersonalMapper {
 
     /**
      * 查询个人排名
-     * @param distance
      * @param gender
      * @return
      */
-    List<Personal> getPersonalRank(@Param("distance") Double distance, @Param("gender") String gender);
+    List<Personal> getPersonalRank(@Param("gender") String gender);
 
     /**
      * 查询团队队员名字
