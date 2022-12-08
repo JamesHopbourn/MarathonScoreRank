@@ -4,7 +4,7 @@ marathon:
 mysql:
   host: 127.0.0.1
   port: 3306
-  data-table: copy
+  data-table: data
   team-table: team
   database: demo
   username: root
