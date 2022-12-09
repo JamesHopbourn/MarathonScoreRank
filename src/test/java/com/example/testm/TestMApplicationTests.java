@@ -1,10 +1,10 @@
 package com.example.testm;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.example.testm.entity.Personal;
 import com.example.testm.entity.Team;
-import com.example.testm.mapper.TeamMapper;
 import com.example.testm.service.ScoreService;
 import com.example.testm.service.TeamService;
 import lombok.extern.slf4j.Slf4j;
@@ -73,8 +73,9 @@ class TestMApplicationTests {
     @Test
     @Order(4)
     void print(){
+        JSONObject.DEFFAULT_DATE_FORMAT="HH:mm:ss";
         List<Team> teamRank = scoreService.getTeamRank();
-        String jsonString = JSON.toJSONString(teamRank, SerializerFeature.PrettyFormat);
+        String jsonString = JSON.toJSONString(teamRank, SerializerFeature.PrettyFormat, SerializerFeature.WriteDateUseDateFormat);
         System.out.println(jsonString);
     }
 }

@@ -3,7 +3,8 @@
 <configuration>
     <!--  引入 application.yml 变量  -->
     <properties resource="application.yml"/>
-    
+
+    <!--  驼峰转为下划线  -->
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>

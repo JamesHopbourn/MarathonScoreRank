@@ -1,7 +1,7 @@
 package com.example.testm.service;
 
-import com.example.testm.entity.Personal;
 import com.example.testm.entity.Team;
+import com.example.testm.entity.Personal;
 
 import java.util.List;
 

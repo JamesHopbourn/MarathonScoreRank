@@ -2,7 +2,6 @@ package com.example.testm.mapper;
 
 import com.example.testm.entity.Personal;
 import com.example.testm.entity.Team;
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
