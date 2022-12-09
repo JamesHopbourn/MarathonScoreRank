@@ -24,10 +24,18 @@ spring:
         format_sql: true
     show-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
 mybatis:
   config-location: classpath:mybatis-config.xml
   mapper-locations: classpath:mapper/**/*.xml
+  
+---
+
+spring:
+  profiles: test
+  jpa:
+    hibernate:
+      ddl-auto: none

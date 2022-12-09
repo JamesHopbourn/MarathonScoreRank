@@ -8,11 +8,13 @@ import com.example.testm.entity.Team;
 import com.example.testm.service.ScoreService;
 import com.example.testm.service.TeamService;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import javax.annotation.Resource;
 import java.sql.Time;
@@ -21,12 +23,19 @@ import java.util.Objects;
 
 @Slf4j
 @SpringBootTest
+@ActiveProfiles("test")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class TestMApplicationTests {
     @Resource
     private ScoreService scoreService;
     @Resource
     private TeamService teamService;
+
+    @Test
+    @BeforeClass
+    public static void setupEnvironment() {
+        System.out.println("james");
+    }
 
     @Test
     @Order(1)
