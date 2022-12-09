@@ -3,14 +3,16 @@ package com.example.testm.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Time;
 
 @Data
 @Entity
 @Table(name = "data")
-public class Personal implements Serializable {
-    private static final long serialVersionUID = 2L;
+public class Personal {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, columnDefinition = "bigint COMMENT '主键ID'")
+    private Long id;
 
     /**
      * 参赛队名
@@ -22,7 +24,6 @@ public class Personal implements Serializable {
      * 参赛号码
      * 此处使用 String 类型 避免开头的0被忽略 也方便后续的字母扩展
      */
-    @Id
     @Column(name = "personal_bib", nullable = false, columnDefinition = "char(6)")
     private String personalBib;
 

@@ -3,15 +3,12 @@ package com.example.testm.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Time;
 
 @Data
 @Entity
 @Table(name = "team")
-public class Team implements Serializable {
-    private static final long serialVersionUID = 1L;
-
+public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, columnDefinition = "bigint COMMENT '主键ID'")
