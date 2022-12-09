@@ -23,19 +23,19 @@ public class Personal implements Serializable {
      * 此处使用 String 类型 避免开头的0被忽略 也方便后续的字母扩展
      */
     @Id
-    @Column(name = "personal_bib", nullable = false, columnDefinition = "char(20)")
+    @Column(name = "personal_bib", nullable = false, columnDefinition = "char(6)")
     private String personalBib;
 
     /**
      * 参赛选手名字
      */
-    @Column(name = "personal_name", nullable = false, columnDefinition = "char(20)")
+    @Column(name = "personal_name", nullable = false, columnDefinition = "char(4)")
     private String personalName;
 
     /**
      * 参赛选手性别
      */
-    @Column(name = "gender", nullable = false, columnDefinition = "char(20)")
+    @Column(name = "gender", nullable = false, columnDefinition = "char(1)")
     private String gender;
 
     /**
@@ -72,7 +72,7 @@ public class Personal implements Serializable {
     /**
      * 配速
      */
-    @Column(name = "avg_pace", columnDefinition = "char(20)")
+    @Column(name = "avg_pace", columnDefinition = "char(6)")
     private String avgPace;
 
     /**

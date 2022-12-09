@@ -14,7 +14,7 @@ public class Team implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, columnDefinition = "bigint(20) COMMENT '主键ID'")
+    @Column(name = "id", nullable = false, columnDefinition = "bigint COMMENT '主键ID'")
     private Long id;
 
     @Column(name = "team_rank", nullable = false, columnDefinition = "int(2) COMMENT '团队排名'")

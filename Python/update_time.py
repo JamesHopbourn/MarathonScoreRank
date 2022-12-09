@@ -25,7 +25,7 @@ for item in data:
         continue
     command.append((f"{item['record_time']}", f"{item['personal_bib']:04}"))
 
-insert_query = f"update {config['table']} set record_time= %s where personal_bib = %s "
+insert_query = f"update {config['data-table']} set record_time= %s where personal_bib = %s "
 cursor = connection.cursor()
 cursor.executemany(insert_query, command)
 connection.commit()
