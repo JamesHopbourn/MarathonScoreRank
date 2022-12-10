@@ -9,6 +9,9 @@ import java.sql.Time;
 @Entity
 @Table(name = "data")
 public class Personal {
+    /**
+     * 自增主键
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, columnDefinition = "bigint COMMENT '主键ID'")

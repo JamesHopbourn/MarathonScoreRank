@@ -14,9 +14,15 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.util.ResourceUtils;
 
 import javax.annotation.Resource;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.URL;
 import java.sql.Time;
 import java.util.List;
 import java.util.Objects;
@@ -30,6 +36,8 @@ class TestMApplicationTests {
     private ScoreService scoreService;
     @Resource
     private TeamService teamService;
+    @Resource
+    private ResourceLoader resourceLoader;
 
     @Test
     @BeforeClass
@@ -81,10 +89,26 @@ class TestMApplicationTests {
 
     @Test
     @Order(4)
-    void print(){
+    void saveData() throws Exception{
+        File parentFolder = new File("src/main/resources/data");
+        if (!parentFolder.exists()) {
+            boolean success = parentFolder.mkdir();
+            if (success) {
+                log.info("Parent folder successfully created!");
+            } else {
+                log.info("Failed to create the parent folder!");
+            }
+        }
+    }
+
+    @Test
+    @Order(5)
+    void print() throws IOException {
         JSONObject.DEFFAULT_DATE_FORMAT="HH:mm:ss";
         List<Team> teamRank = scoreService.getTeamRank();
         String jsonString = JSON.toJSONString(teamRank, SerializerFeature.PrettyFormat, SerializerFeature.WriteDateUseDateFormat);
-        System.out.println(jsonString);
+        FileWriter myWriter = new FileWriter("src/main/resources/data/teamRank.json");
+        myWriter.write(jsonString);
+        myWriter.close();
     }
 }

@@ -11,6 +11,7 @@ mysql:
   password: newpassword
 
 spring:
+  main.web-application-type: NONE
   datasource:
     username: ${mysql.username}
     password: ${mysql.password}
