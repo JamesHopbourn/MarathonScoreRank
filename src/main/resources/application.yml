@@ -1,5 +1,7 @@
 marathon:
   distance: 6.76
+  github-token: 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
+  github-json-path: https://api.github.com/repos/JamesHopbourn/sspai-series-article/contents/
   
 mysql:
   host: 127.0.0.1
@@ -25,7 +27,7 @@ spring:
         format_sql: true
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 

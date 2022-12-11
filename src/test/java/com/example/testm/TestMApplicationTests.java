@@ -1,8 +1,6 @@
 package com.example.testm;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.example.testm.api.GitHubUpdateData;
 import com.example.testm.entity.Personal;
 import com.example.testm.entity.Team;
 import com.example.testm.service.ScoreService;
@@ -14,15 +12,10 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.util.ResourceUtils;
 
 import javax.annotation.Resource;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.net.URL;
 import java.sql.Time;
 import java.util.List;
 import java.util.Objects;
@@ -33,17 +26,10 @@ import java.util.Objects;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class TestMApplicationTests {
     @Resource
-    private ScoreService scoreService;
-    @Resource
     private TeamService teamService;
-    @Resource
-    private ResourceLoader resourceLoader;
 
-    @Test
-    @BeforeClass
-    public static void setupEnvironment() {
-        System.out.println("james");
-    }
+    @Resource
+    private ScoreService scoreService;
 
     @Test
     @Order(1)
@@ -89,26 +75,10 @@ class TestMApplicationTests {
 
     @Test
     @Order(4)
-    void saveData() throws Exception{
-        File parentFolder = new File("src/main/resources/data");
-        if (!parentFolder.exists()) {
-            boolean success = parentFolder.mkdir();
-            if (success) {
-                log.info("Parent folder successfully created!");
-            } else {
-                log.info("Failed to create the parent folder!");
-            }
-        }
-    }
-
-    @Test
-    @Order(5)
-    void print() throws IOException {
-        JSONObject.DEFFAULT_DATE_FORMAT="HH:mm:ss";
-        List<Team> teamRank = scoreService.getTeamRank();
-        String jsonString = JSON.toJSONString(teamRank, SerializerFeature.PrettyFormat, SerializerFeature.WriteDateUseDateFormat);
-        FileWriter myWriter = new FileWriter("src/main/resources/data/teamRank.json");
-        myWriter.write(jsonString);
-        myWriter.close();
+    void githubUpdateData() {
+        GitHubUpdateData.sendUpdateRequest("team.json", scoreService.getTeamRank());
+        GitHubUpdateData.sendUpdateRequest("man.json", scoreService.getManScore());
+        GitHubUpdateData.sendUpdateRequest("woman.json", scoreService.getWomanScore());
+        GitHubUpdateData.sendUpdateRequest("overall.json", scoreService.getOverallScore());
     }
 }
