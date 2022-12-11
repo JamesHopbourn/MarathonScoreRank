@@ -1,6 +1,6 @@
-package com.example.testm.mapper;
+package com.example.marathon.mapper;
 
-import com.example.testm.entity.Team;
+import com.example.marathon.entity.Team;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

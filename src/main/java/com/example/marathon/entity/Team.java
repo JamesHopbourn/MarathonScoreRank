@@ -1,4 +1,4 @@
-package com.example.testm.entity;
+package com.example.marathon.entity;
 
 import lombok.Data;
 

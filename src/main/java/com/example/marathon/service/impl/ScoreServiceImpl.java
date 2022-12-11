@@ -1,9 +1,9 @@
-package com.example.testm.service.impl;
+package com.example.marathon.service.impl;
 
-import com.example.testm.entity.Team;
-import com.example.testm.entity.Personal;
-import com.example.testm.service.ScoreService;
-import com.example.testm.mapper.PersonalMapper;
+import com.example.marathon.entity.Team;
+import com.example.marathon.entity.Personal;
+import com.example.marathon.service.ScoreService;
+import com.example.marathon.mapper.PersonalMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

@@ -1,10 +1,10 @@
-package com.example.testm;
+package com.example.marathon;
 
-import com.example.testm.api.GitHubUpdateData;
-import com.example.testm.entity.Personal;
-import com.example.testm.entity.Team;
-import com.example.testm.service.ScoreService;
-import com.example.testm.service.TeamService;
+import com.example.marathon.api.GitHubUpdateData;
+import com.example.marathon.entity.Personal;
+import com.example.marathon.entity.Team;
+import com.example.marathon.service.ScoreService;
+import com.example.marathon.service.TeamService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;

@@ -1,8 +1,8 @@
-package com.example.testm.service.impl;
+package com.example.marathon.service.impl;
 
-import com.example.testm.entity.Team;
-import com.example.testm.mapper.TeamMapper;
-import com.example.testm.service.TeamService;
+import com.example.marathon.entity.Team;
+import com.example.marathon.mapper.TeamMapper;
+import com.example.marathon.service.TeamService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

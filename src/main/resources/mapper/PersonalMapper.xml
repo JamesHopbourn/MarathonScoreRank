@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.example.testm.mapper.PersonalMapper">
+<mapper namespace="com.example.marathon.mapper.PersonalMapper">
     <!--  查询个人整体数据  -->
-<!--    <select id="getPersonalData" resultType="com.example.testm.entity.Personal">-->
+<!--    <select id="getPersonalData" resultType="com.example.marathon.entity.Personal">-->
 <!--        SELECT personal_bib,-->
 <!--               personal_name,-->
 <!--               gender,-->
