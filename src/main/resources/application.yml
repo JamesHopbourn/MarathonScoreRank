@@ -39,6 +39,4 @@ mybatis:
 
 spring:
   profiles: test
-  jpa:
-    hibernate:
-      ddl-auto: none
+  jpa.hibernate.ddl-auto: none
