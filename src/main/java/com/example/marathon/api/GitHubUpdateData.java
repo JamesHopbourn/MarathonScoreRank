@@ -6,7 +6,6 @@ import com.example.marathon.common.MarathonUtil;
 import com.example.marathon.common.Result;
 import org.apache.http.client.fluent.*;
 import org.apache.http.entity.ContentType;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Base64;
