@@ -17,15 +17,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.netflix.graphql.dgs</groupId>
-            <artifactId>graphql-dgs-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.graphql-java</groupId>
-            <artifactId>graphql-java-tools</artifactId>
-            <version>5.2.4</version>
-        </dependency>
-        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.5.0-M1</version>
@@ -50,7 +41,6 @@
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>1.2.9</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/fluent-hc -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>fluent-hc</artifactId>
@@ -71,11 +61,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.netflix.graphql.dgs</groupId>
-            <artifactId>graphql-dgs</artifactId>
-            <version>4.9.16</version>
         </dependency>
     </dependencies>
 
