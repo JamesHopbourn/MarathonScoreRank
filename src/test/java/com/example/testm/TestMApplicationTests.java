@@ -6,7 +6,6 @@ import com.example.testm.entity.Team;
 import com.example.testm.service.ScoreService;
 import com.example.testm.service.TeamService;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -15,7 +14,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import javax.annotation.Resource;
-import java.io.File;
 import java.sql.Time;
 import java.util.List;
 import java.util.Objects;
