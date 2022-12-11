@@ -1,7 +1,6 @@
 package com.example.marathon;
 
 import com.example.marathon.api.GitHubUpdateData;
-import com.example.marathon.common.Result;
 import com.example.marathon.entity.Personal;
 import com.example.marathon.entity.Team;
 import com.example.marathon.service.ScoreService;
