@@ -1,1 +1,1 @@
-*.json filter=applicationFilter
+*.yml filter=applicationFilter
