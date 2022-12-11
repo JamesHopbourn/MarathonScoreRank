@@ -2,6 +2,8 @@ package com.example.marathon.api;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.example.marathon.common.MarathonUtil;
+import com.example.marathon.common.Result;
 import org.apache.http.client.fluent.*;
 import org.apache.http.entity.ContentType;
 import org.springframework.stereotype.Component;
@@ -10,7 +12,6 @@ import java.util.List;
 import java.util.Base64;
 import java.io.IOException;
 
-@Component
 public class GitHubUpdateData {
     public static String getFileData(String filename) {
         try {
@@ -29,7 +30,8 @@ public class GitHubUpdateData {
 
         // 定义时间格式查询数据
         JSONObject.DEFFAULT_DATE_FORMAT="HH:mm:ss";
-        String content = JSON.toJSONString(data, SerializerFeature.PrettyFormat, SerializerFeature.WriteDateUseDateFormat);
+        Result result = Result.ok(data);
+        String content = JSON.toJSONString(result, SerializerFeature.PrettyFormat, SerializerFeature.WriteDateUseDateFormat);
 
         // 创建请求数据结构
         JSONObject json = new JSONObject();

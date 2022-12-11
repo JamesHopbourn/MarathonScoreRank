@@ -1,4 +1,4 @@
-package com.example.marathon.api;
+package com.example.marathon.common;
 
 import lombok.Data;
 

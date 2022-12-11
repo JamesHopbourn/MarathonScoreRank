@@ -2,8 +2,8 @@ package com.example.marathon.entity;
 
 import lombok.Data;
 
-import javax.persistence.*;
 import java.sql.Time;
+import javax.persistence.*;
 
 @Data
 @Entity

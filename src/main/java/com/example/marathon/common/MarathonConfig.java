@@ -1,4 +1,4 @@
-package com.example.marathon.api;
+package com.example.marathon.common;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
