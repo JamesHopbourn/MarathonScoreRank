@@ -26,7 +26,7 @@ public class Team {
     /**
      * 团队名字
      */
-    @Column(name = "team_name", nullable = false, columnDefinition = "char(20) CHARACTER SET utf8mb4 COMMENT '用户名'")
+    @Column(name = "team_name", nullable = false, columnDefinition = "char(20) CHARACTER SET utf8mb4 COMMENT '团队名字'")
     private String teamName;
 
     /**
