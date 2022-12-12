@@ -1,5 +1,6 @@
 package com.example.marathon;
 
+import com.alibaba.fastjson.JSON;
 import com.example.marathon.api.GitHubUpdateData;
 import com.example.marathon.entity.Personal;
 import com.example.marathon.entity.Team;
@@ -74,9 +75,10 @@ class MarathonScoreRankTests {
     @Test
     @Order(4)
     void githubUpdateData() {
-        GitHubUpdateData.sendUpdateRequest("team.json", scoreService.getTeamRank());
-        GitHubUpdateData.sendUpdateRequest("man.json", scoreService.getManScore());
-        GitHubUpdateData.sendUpdateRequest("woman.json", scoreService.getWomanScore());
-        GitHubUpdateData.sendUpdateRequest("overall.json", scoreService.getOverallScore());
+        boolean team = GitHubUpdateData.sendUpdateRequest("team.json", scoreService.getTeamRank());
+        boolean man = GitHubUpdateData.sendUpdateRequest("man.json", scoreService.getManScore());
+        boolean woman = GitHubUpdateData.sendUpdateRequest("woman.json", scoreService.getWomanScore());
+        boolean overall = GitHubUpdateData.sendUpdateRequest("overall.json", scoreService.getOverallScore());
+        assert team && man && woman && overall;
     }
 }

@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.example.marathon.common.MarathonUtil;
 import com.example.marathon.common.Result;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.fluent.*;
 import org.apache.http.entity.ContentType;
 
@@ -11,26 +12,27 @@ import java.util.List;
 import java.util.Base64;
 import java.io.IOException;
 
+@Slf4j
 public class GitHubUpdateData {
     public static String getFileData(String filename) {
         try {
-            Content content = Request.Get(MarathonUtil.getGithubJsonPath() + filename)
-                    .addHeader("Authorization", "token " + MarathonUtil.getGithubToken())
-                    .execute().returnContent();
-            return JSONObject.parseObject(content.toString()).getString("sha");
+            String response = Request.Get(String.format("%s/%s", MarathonUtil.getGithubJsonPath(), filename))
+                    .addHeader("Authorization", String.format("token %s", MarathonUtil.getGithubToken()))
+                    .execute().returnContent().asString();
+            return JSONObject.parseObject(response).getString("sha");
         }
         catch (IOException e) { System.out.println(e); }
         return null;
     }
 
-    public static <T> void sendUpdateRequest(String filename, List<T> data) {
+    public static <T> boolean sendUpdateRequest(String filename, List<T> data) {
         // 查询历史文件的 sha
         String sha = getFileData(filename);
-
+        
         // 定义时间格式查询数据
         JSONObject.DEFFAULT_DATE_FORMAT="HH:mm:ss";
-        Result result = Result.ok(data);
-        String content = JSON.toJSONString(result, SerializerFeature.PrettyFormat, SerializerFeature.WriteDateUseDateFormat);
+        String content = JSON.toJSONString(Result.ok(data),
+                SerializerFeature.PrettyFormat, SerializerFeature.WriteDateUseDateFormat);
 
         // 创建请求数据结构
         JSONObject json = new JSONObject();
@@ -38,14 +40,17 @@ public class GitHubUpdateData {
         json.put("message", "更新数据");
         json.put("content", Base64.getEncoder().encodeToString(content.getBytes()));
         try {
-            Content request = Request.Put(MarathonUtil.getGithubJsonPath() + filename)
-                    .addHeader("Authorization", "token " + MarathonUtil.getGithubToken())
+            String request = Request.Put(String.format("%s/%s", MarathonUtil.getGithubJsonPath(), filename))
+                    .addHeader("Authorization", String.format("token %s", MarathonUtil.getGithubToken()))
                     .addHeader("Content-Type", "application/json; charset=utf-8")
                     .bodyString(json.toJSONString(), ContentType.APPLICATION_JSON)
-                    .execute().returnContent();
-            System.out.println(request);
+                    .execute().returnContent().asString();
+            JSONObject response = JSON.parseObject(request).getJSONObject("content");
+            log.info("file: {}  size: {}", response.getString("name"), response.getIntValue("size"));
+            return response.getIntValue("size") > 0;
         }
         catch (IOException e) { System.out.println(e); }
+        return false;
     }
 
 }
