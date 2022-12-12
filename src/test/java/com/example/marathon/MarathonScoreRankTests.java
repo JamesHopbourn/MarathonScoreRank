@@ -49,9 +49,12 @@ class MarathonScoreRankTests {
         log.info(overallBoolean.toString());
     }
 
+    /**
+     * 写入团队总时间
+     */
     @Test
     @Order(2)
-    void select(){
+    void updateTeamTotalTime(){
         List<Team> teamRank = scoreService.getTeamRank();
         for (Team team : teamRank) {
             teamService.save(team);
@@ -72,6 +75,9 @@ class MarathonScoreRankTests {
         }
     }
 
+    /**
+     * 更新数据到 GitHub 博客指定分支
+     */
     @Test
     @Order(4)
     void githubUpdateData() {
