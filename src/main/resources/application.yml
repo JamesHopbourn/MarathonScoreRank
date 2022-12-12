@@ -1,7 +1,8 @@
 marathon:
   distance: 6.76
   github-token: 
-  github-json-path: https://api.github.com/repos/JamesHopbourn/sspai-series-article/contents/
+  github-branch: hexo
+  github-json-path: https://api.github.com/repos/JamesHopbourn/JamesHopbourn.github.io/contents/source/221212/data
   
 mysql:
   host: 127.0.0.1
