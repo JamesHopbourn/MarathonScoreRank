@@ -1,3 +1,6 @@
+*.xls
+*.xlsx
+
 # Compiled class file
 *.class
 

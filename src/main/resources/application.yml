@@ -2,7 +2,7 @@ marathon:
   distance: 6.76
   github-token: 
   github-branch: hexo
-  github-json-path: https://api.github.com/repos/JamesHopbourn/JamesHopbourn.github.io/contents/source/221212/data
+  github-json-path: https://api.github.com/repos/JamesHopbourn/JamesHopbourn.github.io/contents/source/221212/data/
   
 mysql:
   host: 127.0.0.1
@@ -39,9 +39,4 @@ spring:
 mybatis:
   config-location: classpath:mybatis-config.xml
   mapper-locations: classpath:mapper/**/*.xml
-  
----
 
-spring:
-  profiles: test
-  jpa.hibernate.ddl-auto: none

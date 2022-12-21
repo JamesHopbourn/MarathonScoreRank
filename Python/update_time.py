@@ -14,6 +14,8 @@ connection = pymysql.connect(
     database=config['database'],
 )
 
+num = input('序号：')
+
 # 表格数据转为字典
 sheet = pd.read_excel('data.xlsx')
 data = sheet.to_dict(orient="records")
@@ -23,7 +25,8 @@ command = []
 for item in data:
     if (type(item['record_time']) is float):
         continue
-    command.append((f"{item['record_time']}", f"{item['personal_bib']:04}"))
+    if str(item['personal_bib']).endswith(num):
+        command.append((f"{item['record_time']}", f"{item['personal_bib']:04}"))
 
 insert_query = f"update {config['data-table']} set record_time= %s where personal_bib = %s "
 cursor = connection.cursor()

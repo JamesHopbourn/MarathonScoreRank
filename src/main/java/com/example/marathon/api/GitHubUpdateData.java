@@ -20,6 +20,7 @@ public class GitHubUpdateData {
             String response = Request.Get(format)
                     .addHeader("Authorization", String.format("token %s", MarathonUtil.getGithubToken()))
                     .execute().returnContent().asString();
+            System.out.println(response);
             return JSONObject.parseObject(response).getString("sha");
         }
         catch (IOException e) { System.out.println(e); }
@@ -41,9 +42,10 @@ public class GitHubUpdateData {
         json.put("message", "更新数据");
         json.put("branch", MarathonUtil.getGithubBranch());
         json.put("content", Base64.getEncoder().encodeToString(content.getBytes()));
+        System.out.println(Base64.getEncoder().encodeToString(content.getBytes()));
         try {
             String format = String.format("%s/%s", MarathonUtil.getGithubJsonPath(), filename);
-            String request = Request.Put(format)
+            String request = Request.Put("https://api.github.com/repos/JamesHopbourn/JamesHopbourn.github.io/contents/source/221212/data/woman.json?ref=hexo")
                     .addHeader("Authorization", String.format("token %s", MarathonUtil.getGithubToken()))
                     .addHeader("Content-Type", "application/json; charset=utf-8")
                     .bodyString(json.toJSONString(), ContentType.APPLICATION_JSON)

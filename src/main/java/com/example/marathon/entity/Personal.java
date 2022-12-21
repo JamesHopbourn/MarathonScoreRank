@@ -16,7 +16,7 @@ public class Personal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, columnDefinition = "bigint COMMENT '主键ID'")
     private Long id;
-
+ 
     /**
      * 参赛队名
      */

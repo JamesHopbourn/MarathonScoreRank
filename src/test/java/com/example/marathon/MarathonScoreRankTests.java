@@ -11,7 +11,9 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.boot.autoconfigure.info.ProjectInfoProperties;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.env.Environment;
 import org.springframework.test.context.ActiveProfiles;
 
 import javax.annotation.Resource;
@@ -30,6 +32,21 @@ class MarathonScoreRankTests {
     @Resource
     private ScoreService scoreService;
 
+
+    @Test
+    @Order(1)
+    void womanScoreData(){
+        // 计算更新女子性别分组成绩
+        List<Personal> womanScore = scoreService.getWomanScore();
+        Boolean womanBoolean = scoreService.updateGenderRank(womanScore);
+        log.info(womanBoolean.toString());
+
+        // 计算更新全体排名、平均速度
+        List<Personal> overallScore = scoreService.getOverallScore();
+        Boolean overallBoolean = scoreService.updateOverallRank(overallScore);
+        log.info(overallBoolean.toString());
+    }
+    
     @Test
     @Order(1)
     void updateScoreData(){
@@ -37,11 +54,6 @@ class MarathonScoreRankTests {
         List<Personal> manScore = scoreService.getManScore();
         Boolean manBoolean = scoreService.updateGenderRank(manScore);
         log.info(manBoolean.toString());
-
-        // 计算更新女子性别分组成绩
-        List<Personal> womanScore = scoreService.getWomanScore();
-        Boolean womanBoolean = scoreService.updateGenderRank(womanScore);
-        log.info(womanBoolean.toString());
 
         // 计算更新全体排名、平均速度
         List<Personal> overallScore = scoreService.getOverallScore();
@@ -86,5 +98,18 @@ class MarathonScoreRankTests {
         boolean woman = GitHubUpdateData.sendUpdateRequest("woman.json", scoreService.getWomanScore());
         boolean overall = GitHubUpdateData.sendUpdateRequest("overall.json", scoreService.getOverallScore());
         assert team && man && woman && overall;
+    }
+
+    @Test
+    void womanGithubUpdateData(){
+        System.out.println(scoreService.getWomanScore());
+
+        boolean woman = GitHubUpdateData.sendUpdateRequest("woman.json", scoreService.getWomanScore());
+        assert woman;
+    }
+
+    @Test
+    void udpate(){
+        System.out.println(GitHubUpdateData.getFileData("man.json"));
     }
 }
